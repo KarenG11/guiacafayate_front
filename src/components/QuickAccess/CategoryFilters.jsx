@@ -1,33 +1,38 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useCategorias from '../../hooks/useCategorias';
 import './CategoryFilters.css';
 
+// Mapeo de categorías a sus iconos
+const CATEGORIA_ICONS = {
+  'Alojamientos': '🏨',
+  'Restaurantes': '🍽️',
+  'Comercios': '🛍️',
+  'Servicios': '⚙️',
+  'Transporte': '�',
+  'Turismo': '🗺️'
+};
+
 function CategoryFilters({ currentCategory }) {
-  const categories = [
-    {
-      id: 'alojamientos',
-      title: 'Alojamientos',
-      icon: '🏨',
-      to: '/alojamientos'
-    },
-    {
-      id: 'restaurantes',
-      title: 'Restaurantes',
-      icon: '🍽️',
-      to: '/restaurantes'
-    },
-    {
-      id: 'comercios',
-      title: 'Comercios',
-      icon: '🛍️',
-      to: '/comercios'
-    },
-    {
-      id: 'servicios',
-      title: 'Servicios',
-      icon: '⚙️',
-      to: '/servicios'
+  const { categorias, loading } = useCategorias();
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    if (categorias && categorias.length > 0) {
+      const mappedCategories = categorias.map((cat) => ({
+        id: cat.nombre.toLowerCase(),
+        title: cat.nombre,
+        icon: CATEGORIA_ICONS[cat.nombre] || '📍',
+        to: `/${cat.nombre.toLowerCase()}`
+      }));
+      
+      setCategories(mappedCategories);
     }
-  ];
+  }, [categorias]);
+
+  if (loading || categories.length === 0) {
+    return null;
+  }
 
   return (
     <div className="category-filters">

@@ -46,3 +46,49 @@
   border-radius: 8px;
   border-left: 4px solid #d32f2f;
 }
+
+/* ===== CONTENEDOR DE CARDS ===== */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Mobile: 2 columnas */
+  gap: 1.5rem;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  max-width: 100%;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+/* Todas las cards tendrán la misma altura y ancho */
+.cards-container .card-empresa {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 350px;
+}
+
+/* Mobile: 2 columnas */
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 15px;
+  }
+}
+
+/* Tablet: 3 columnas */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop: 4 columnas */
+@media (min-width: 1025px) {
+  .cards-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

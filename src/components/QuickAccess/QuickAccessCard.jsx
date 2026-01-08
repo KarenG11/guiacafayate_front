@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom';
 import './QuickAccessCard.css';
 
-function QuickAccessCard({ title, icon, description, color, to }) {
+function QuickAccessCard({ category }) {
+  
   return (
     <Link 
-      to={to}
+      // to={to}
       className="quick-access-card" 
-      style={{ '--card-color': color }}
+      style={{ '--card-color': category.color }}
     >
       <div className="quick-access-card-icon">
-        {icon}
+        {category.icono}
       </div>
-      <h3 className="quick-access-card-title">{title}</h3>
-      <p className="quick-access-card-description">{description}</p>
+      <h3 className="quick-access-card-title">{category.nombre}</h3>
+      <p className="quick-access-card-description">{category.descripcion_breve}</p>
       <div className="quick-access-card-arrow">→</div>
     </Link>
   );

@@ -6,6 +6,8 @@ import AlojamientosPage from './pages/AlojamientosPage';
 import RestaurantesPage from './pages/RestaurantesPage';
 import ComerciosPage from './pages/ComerciosPage';
 import ServiciosPage from './pages/ServiciosPage';
+import TransportePage from './pages/TransportePage';
+import TurismoPage from './pages/TurismoPage';
 import Login from './components/Auth/Login';
 import Registro from './components/Auth/Registro';
 import Footer from './components/Footer/Footer';
@@ -24,6 +26,8 @@ function App() {
               <Route path="/restaurantes" element={<RestaurantesPage />} />
               <Route path="/comercios" element={<ComerciosPage />} />
               <Route path="/servicios" element={<ServiciosPage />} />
+              <Route path="/transporte" element={<TransportePage />} />
+              <Route path="/turismo" element={<TurismoPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/registro" element={<Registro />} />
             </Routes>
